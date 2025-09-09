@@ -15,7 +15,12 @@ $basePath = dirname(__DIR__);
 $apiato = Apiato::configure(basePath: $basePath)->create();
 
 return Application::configure(basePath: $basePath)
-    ->withProviders($apiato->providers())
+   ->withProviders(array_merge(
+        $apiato->providers(),
+        [
+            App\Providers\Filament\AdminPanelProvider::class,
+        ]
+    ))
     ->withEvents($apiato->events())
     ->withRouting(
         web: $apiato->webRoutes(),

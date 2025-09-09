@@ -37,6 +37,7 @@
     "require": {
         "php": "^8.2",
         "apiato/core": "^13.1",
+        "filament/filament": "3.3",
         "laravel/passport": "^13.0",
         "spatie/laravel-permission": "^6.0",
         "wikimedia/composer-merge-plugin": "^2.1"
@@ -76,7 +77,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"

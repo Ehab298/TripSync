@@ -1,0 +1,6 @@
+{
+    "name": "apiato/companies",
+    "description": "Companies Container",
+    "type": "apiato-container",
+    "require": {}
+}
