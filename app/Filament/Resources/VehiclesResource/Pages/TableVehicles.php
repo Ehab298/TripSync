@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\DriversResource\Pages;
+namespace App\Filament\Resources\VehiclesResource\Pages;
 
-use App\Containers\AppSection\Companies\Models\Companies;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Filters\Filter;
-use Illuminate\Database\Eloquent\Builder;
-use App\Containers\AppSection\Companies\Models\Company;
+use App\Containers\AppSection\Companies\Models\Companies;
 use App\Providers\Filament\Components\ActionsComponentViewEditeDelete;
 use App\Providers\Filament\Components\BulkActionsComponent;
 
-class TableDrivers
+class TableVehicles
 {
     public static function getTableSchema(Tables\Table $table): Tables\Table
     {
@@ -23,13 +20,13 @@ class TableDrivers
                     ->sortable()
                     ->searchable(),
 
-                TextColumn::make('name')
-                    ->label('Driver Name')
+                TextColumn::make('plate_number')
+                    ->label('Plate Number')
                     ->sortable()
                     ->searchable(),
 
-                TextColumn::make('license_number')
-                    ->label('License Number')
+                TextColumn::make('model')
+                    ->label('Model')
                     ->sortable()
                     ->searchable(),
 
@@ -39,16 +36,13 @@ class TableDrivers
                     ->sortable(),
             ])
             ->filters([
-                // 🔹 Filter by Company
                 SelectFilter::make('company_id')
                     ->label('Company')
                     ->options(
                         Companies::query()->pluck('name', 'id')->toArray()
                     )
                     ->searchable(),
-
             ])
-
             ->actions(app(ActionsComponentViewEditeDelete::class)->run())
             ->bulkActions(app(BulkActionsComponent::class)->run());
     }

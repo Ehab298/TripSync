@@ -11,6 +11,8 @@ class  SchemaDrivers {
             Forms\Components\Select::make('company_id')
                 ->label('Company')
                 ->relationship('company', 'name')
+                ->searchable()
+                ->preload()
                 ->required(),
             Forms\Components\TextInput::make('name')
                 ->label('Driver Name')

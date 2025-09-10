@@ -37,6 +37,11 @@ class CompaniesResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime('d-M-Y H:i:s')
+                    ->sortable(),
             ])
             ->actions(app(ActionsComponentViewEditeDelete::class)->run())
             ->bulkActions(app(BulkActionsComponent::class)->run());
