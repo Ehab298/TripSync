@@ -1,0 +1,6 @@
+{
+    "name": "apiato/trips",
+    "description": "Trips Container",
+    "type": "apiato-container",
+    "require": {}
+}
