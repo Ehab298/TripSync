@@ -1,0 +1,6 @@
+{
+    "name": "apiato/drivers",
+    "description": "Drivers Container",
+    "type": "apiato-container",
+    "require": {}
+}
