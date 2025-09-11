@@ -14,36 +14,53 @@ class SchemaTrips
     public static function getSchema(): array
     {
         return [
-            Forms\Components\Select::make('company_id')
+    Forms\Components\Select::make('company_id')
                 ->label('Company')
                 ->options(Companies::query()->pluck('name', 'id')->toArray())
                 ->searchable()
-                ->required(),
+                ->required()
+                ->reactive(), // triggers updates on dependent fields
 
             Forms\Components\Select::make('driver_id')
                 ->label('Driver')
-                ->options(Drivers::query()->pluck('name', 'id')->toArray())
-                ->searchable()
-                ->required(),
+                ->options(function (callable $get) {
+                    $companyId = $get('company_id');
+                    if (!$companyId) {
+                        return [];
+                    }
+
+                    return Drivers::where('company_id', $companyId)
+                        ->pluck('name', 'id')
+                        ->toArray();
+                })
+                ->required()
+                ->searchable(),
 
             Forms\Components\Select::make('vehicle_id')
                 ->label('Vehicle')
-                ->options(Vehicles::query()->pluck('plate_number', 'id')->toArray())
-                ->searchable()
-                ->required(),
+                ->options(function (callable $get) {
+                    $companyId = $get('company_id');
+                    if (!$companyId) {
+                        return [];
+                    }
 
-            Forms\Components\DatePicker::make('start_time')
+                    return Vehicles::where('company_id', $companyId)
+                        ->pluck('plate_number', 'id')
+                        ->toArray();
+                })
+                ->required()
+                ->searchable(),
+                
+            Forms\Components\DateTimePicker::make('start_time')
                 ->label('Start Time')
                 ->required()
-                ->minDate(now())   
-                ->native(false),   
+                ->minDate(now())   ,   
 
-            Forms\Components\DatePicker::make('end_time')
+            Forms\Components\DateTimePicker::make('end_time')
                 ->label('End Time')
                 ->required()
                 ->minDate(now())   
-                ->after('start_time') 
-                ->native(false),
+                ->after('start_time') ,
 
 
         ];

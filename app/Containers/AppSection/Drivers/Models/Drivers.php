@@ -18,4 +18,10 @@ final class Drivers extends ParentModel
     {
         return $this->belongsTo(\App\Containers\AppSection\Companies\Models\Companies::class, 'company_id');
     }
+
+        public function trips()
+    {
+        // Driver can have many trips
+        return $this->hasMany(\App\Containers\AppSection\Trips\Models\Trips::class, 'driver_id');
+    }
 }
