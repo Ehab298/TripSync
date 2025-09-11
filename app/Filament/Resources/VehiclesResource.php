@@ -14,7 +14,7 @@ class VehiclesResource extends Resource
 {
     protected static ?string $model = Vehicles::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-truck';
 
     public static function form(Form $form): Form
     {
