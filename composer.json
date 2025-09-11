@@ -37,6 +37,7 @@
     "require": {
         "php": "^8.2",
         "apiato/core": "^13.1",
+        "eightynine/filament-advanced-widgets": "^3.0",
         "filament/filament": "3.3",
         "laravel/passport": "^13.0",
         "spatie/laravel-permission": "^6.0",

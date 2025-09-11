@@ -14,7 +14,7 @@ class TripsResource extends Resource
 {
     protected static ?string $model = Trips::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-truck';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
     public static function form(Form $form): Form
     {
