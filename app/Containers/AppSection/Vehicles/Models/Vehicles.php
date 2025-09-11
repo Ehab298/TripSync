@@ -18,4 +18,9 @@ final class Vehicles extends ParentModel
     {
         return $this->belongsTo(\App\Containers\AppSection\Companies\Models\Companies::class, 'company_id');
     }
+
+    public function trips()
+    {
+        return $this->hasMany(\App\Containers\AppSection\Trips\Models\Trips::class, 'vehicle_id');
+    }
 }

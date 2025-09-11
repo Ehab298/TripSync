@@ -32,15 +32,14 @@ class StatsOverview extends BaseWidget
         $activeTrips = Trips::where('status', 'active')->count();
 
         $busyDrivers = Trips::where('status', 'active')->pluck('driver_id')->unique();
+
         $availableDrivers = Drivers::whereNotIn('id', $busyDrivers)->count();
 
         $busyVehicles = Trips::where('status', 'active')->pluck('vehicle_id')->unique();
+        
         $availableVehicles = Vehicles::whereNotIn('id', $busyVehicles)->count();
 
-        $completedThisMonth = Trips::where('status', 'completed')
-            ->whereMonth('end_time', Carbon::now()->month)
-            ->whereYear('end_time', Carbon::now()->year)
-            ->count();
+        $completedThisMonth = Trips::where('status', 'completed')->count();
 
         return [
             Stat::make('Active Trips', $activeTrips)
