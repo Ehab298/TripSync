@@ -6,17 +6,6 @@
 [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
 
-## 📋 Table of Contents
-
-- [About](#about)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Database Setup](#database-setup)
-- [Running the Application](#running-the-application)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## 🚀 About
 
 TripSync is a powerful travel management platform that helps users synchronize their travel plans, collaborate with fellow travelers, and organize their trips efficiently.
@@ -25,10 +14,9 @@ TripSync is a powerful travel management platform that helps users synchronize t
 
 Before you begin, ensure you have the following installed:
 
-- **PHP** >= 8.1
+- **PHP** >= 8.3
 - **Composer** >= 2.0
 - **MySQL** >= 8.0
-- **Node.js** >= 16.x (optional, for frontend assets)
 
 ## 🛠️ Installation
 
@@ -110,54 +98,6 @@ Populate the database with sample data:
 php artisan db:seed
 ```
 
-## 🏃‍♂️ Running the Application
-
-Start the development server:
-
-```bash
-php artisan serve
-```
-
-Your application will be available at: `http://localhost:8000`
-
-## 📁 Project Structure
-
-```
-TripSync/
-├── app/                    # Application logic
-├── bootstrap/              # Framework bootstrap files
-├── config/                 # Configuration files
-├── database/              # Migrations and seeders
-├── public/                # Public assets
-├── resources/             # Views, CSS, JS
-├── routes/                # Application routes
-├── storage/               # Storage files
-├── tests/                 # Test files
-└── vendor/                # Composer dependencies
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-- Create an [issue](https://github.com/your-username/TripSync/issues)
-- Contact us at: support@tripsync.com
-
----
 
 <div align="center">
   Made with ❤️ by the TripSync Team
