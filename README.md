@@ -55,8 +55,8 @@ php artisan key:generate
 APP_NAME=TripSync
 APP_ENV=local
 APP_DEBUG=true
-APP_URL=http://localhost:8000
-
+APP_URL=http://TripSync.test
+API_URL=http://TripSync.test
 # Database Configuration
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
