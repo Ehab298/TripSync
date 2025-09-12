@@ -98,6 +98,13 @@ Populate the database with sample data:
 php artisan db:seed
 ```
 
+### 4. link admin 
+
+local url 
+```bash
+http://tripsync.test/admin
+```
+
 
 <div align="center">
   Made with ❤️ by the TripSync Team
