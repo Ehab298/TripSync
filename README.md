@@ -147,13 +147,7 @@ Populate the database with sample data:
 php artisan db:seed
 ```
 
-### 4. Generate OAuth Keys
 
-Generate Laravel Passport keys for API authentication:
-
-```bash
-php artisan passport:keys
-```
 
 ## 🔧 Additional Setup
 
