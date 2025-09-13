@@ -12,8 +12,7 @@ TripSync is a powerful travel management platform that helps users synchronize t
 ## 📸 Screenshots
 
 ### Dashboard Overview
-[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
-
+![Trip Planning](https://drive.google.com/file/d/1m5Jo4QeeF5cWS8fj77c4PHCs1wuqm6qe/view?usp=drive_link)
 ### Trip Planning Interface
 ![Trip Planning](https://drive.google.com/uc?export=view&id=1m5Jo4QeeF5cWS8fj77c4PHCs1wuqm6qe)
 
