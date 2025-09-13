@@ -1,5 +1,4 @@
-# 🌍 TripSync
-
+# TripSync
 > A comprehensive travel synchronization and management platform built with Laravel
 
 [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
@@ -8,7 +7,24 @@
 
 ## 🚀 About
 
-TripSync is a powerful travel management platform that helps users synchronize their travel plans, collaborate with fellow travelers, and organize their trips efficiently.
+TripSync is a powerful travel management platform that helps users synchronize their travel plans, collaborate with fellow travelers, and organize their trips efficiently. Built with Laravel's robust framework, it provides a seamless experience for managing all aspects of your travel adventures.
+
+## 📸 Screenshots
+
+### Dashboard Overview
+![Dashboard](https://drive.google.com/uc?export=view&id=12e42FZo5Ljuu2VH6jqMK1tnWWKDGdPZF)
+
+### Trip Planning Interface
+![Trip Planning](https://drive.google.com/uc?export=view&id=1m5Jo4QeeF5cWS8fj77c4PHCs1wuqm6qe)
+
+### Travel Collaboration
+![Collaboration](https://drive.google.com/uc?export=view&id=1x1quvrcEBxBUvNI8qbiXhT_K91DmJQHX)
+
+### Mobile Experience
+![Mobile View](https://drive.google.com/uc?export=view&id=1vUX3HKSMBumuEjyV8c-76ypUJMUGGrFW)
+
+### Admin Panel
+![Admin Panel](https://drive.google.com/uc?export=view&id=1yyxlsa-l6bJZtBoYOPvw98W8ABA4JBbc)
 
 ## ⚡ Prerequisites
 
@@ -17,6 +33,7 @@ Before you begin, ensure you have the following installed:
 - **PHP** >= 8.3
 - **Composer** >= 2.0
 - **MySQL** >= 8.0
+- **Node.js** >= 16.0 (for frontend assets)
 
 ## 🛠️ Installation
 
@@ -31,6 +48,7 @@ cd TripSync
 
 ```bash
 composer install
+npm install && npm run build
 ```
 
 ### 3. Generate Application Key
@@ -44,100 +62,60 @@ php artisan key:generate
 ### Environment Setup
 
 1. Copy the example environment file:
-   ```bash
-   cp .env.example .env
-   ```
+
+```bash
+cp .env.example .env
+```
 
 2. Edit the `.env` file with your configuration:
 
 ```env
 # Application Settings
-APP_NAME="apiato"
+APP_NAME="TripSync"
 APP_ENV=local
 APP_KEY=base64:PTOt4b2rRYG1D/jw9Cf+ZvoNBZrvTfcTL12zcFiPYEo=
-APP_URL=http://TripSync.test
-API_URL=http://TripSync.test
+APP_URL=http://tripsync.test
+API_URL=http://tripsync.test
 API_PREFIX=/
-BACKUP_PATH="backups"
 APP_DEBUG=true
 API_DEBUG=true
-DEBUGBAR_ENABLED=null
 
 LOG_CHANNEL=stack
-LOG_DEPRECATIONS_CHANNEL=null
 LOG_LEVEL=debug
 
-HASH_ID=false
-HASH_ID_KEY=apiato
-HASH_ID_LENGTH=16
-
-
-PAGINATION_LIMIT_DEFAULT=10
-PAGINATION_SKIP=false
-
-API_TOKEN_EXPIRES=1440
-API_REFRESH_TOKEN_EXPIRES=43200
-API_ENABLE_IMPLICIT_GRANT=true
-
-REQUIRE_EMAIL_VERIFICATION=true
-EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE=30
-
-ELOQUENT_QUERY_CACHE=false
-ELOQUENT_QUERY_CACHE_TIME=60
-
-SRC_PATH=app
-
-ROOT_NAMESPACE=App\
-USER_NAMESPACE=App\Containers\AppSection\User\Models\
-ADMIN_ROLE=admin
-
+# Database Configuration
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=TripSync
+DB_DATABASE=tripsync
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD=your_password_here
 
-BROADCAST_DRIVER=log
+# Cache & Session
 CACHE_DRIVER=file
-FILESYSTEM_DISK=local
-QUEUE_CONNECTION=database
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
+QUEUE_CONNECTION=database
 
-MEMCACHED_HOST=127.0.0.1
-
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
-
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_DEFAULT_REGION=us-east-1
-AWS_BUCKET=
-AWS_USE_PATH_STYLE_ENDPOINT=false
-
-PUSHER_APP_ID=
-PUSHER_APP_KEY=
-PUSHER_APP_SECRET=
-PUSHER_HOST=
-PUSHER_PORT=443
-PUSHER_SCHEME=https
-PUSHER_APP_CLUSTER=mt1
-
-QUEUE_CONNECTION=sync
-DB_QUEUE_CONNECTION=mysql
-
-
-PASSPORT_PRIVATE_KEY="file://C:/laragon/www/TripSync/storage/oauth-private.key"
-PASSPORT_PUBLIC_KEY="file://C:/laragon/www/TripSync/storage/oauth-public.key"
-
-
+# Email Configuration (Optional)
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@tripsync.com"
+MAIL_FROM_NAME="${APP_NAME}"
 
 # OAuth Keys (Laravel Passport)
 PASSPORT_PRIVATE_KEY="file://storage/oauth-private.key"
 PASSPORT_PUBLIC_KEY="file://storage/oauth-public.key"
+
+# API Configuration
+API_TOKEN_EXPIRES=1440
+API_REFRESH_TOKEN_EXPIRES=43200
+REQUIRE_EMAIL_VERIFICATION=true
+EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE=30
 ```
 
 > ⚠️ **Important**: Replace `your_password_here` with your actual MySQL password and update paths as needed for your environment.
@@ -167,21 +145,104 @@ Populate the database with sample data:
 ```bash
 php artisan db:seed
 ```
-### 4. create admin 
 
-local url 
+### 4. Generate OAuth Keys
+
+Generate Laravel Passport keys for API authentication:
+
+```bash
+php artisan passport:keys
+```
+
+## 🔧 Additional Setup
+
+### 1. Create Admin User
+
+Create an admin user for the Filament admin panel:
+
 ```bash
 php artisan make:filament-user
-
 ```
-### 5. link admin 
 
-local url 
+### 2. Start the Development Server
+
 ```bash
-http://tripsync.test/admin
+php artisan serve
 ```
 
+### 3. Access the Application
+
+- **Main Application**: http://tripsync.test
+- **Admin Panel**: http://tripsync.test/admin
+- **API Documentation**: http://tripsync.test/api/documentation
+
+## 🚀 Features
+
+- **Trip Planning**: Create and manage detailed travel itineraries
+- **Collaboration**: Share trips and collaborate with fellow travelers
+- **Real-time Sync**: Keep all your travel data synchronized across devices
+- **Expense Tracking**: Monitor and split travel expenses
+- **Document Management**: Store and organize travel documents
+- **Mobile Responsive**: Access your trips from any device
+- **API Integration**: Full REST API for third-party integrations
+
+## 🧪 Testing
+
+Run the application tests:
+
+```bash
+# Run all tests
+php artisan test
+
+# Run with coverage
+php artisan test --coverage
+```
+
+## 📝 API Documentation
+
+The API documentation is available at `/api/documentation` when the application is running. You can also generate the documentation using:
+
+```bash
+php artisan l5-swagger:generate
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🛠️ Built With
+
+- [Laravel](https://laravel.com/) - The PHP Framework
+- [Filament](https://filamentphp.com/) - Admin Panel
+- [Laravel Passport](https://laravel.com/docs/passport) - API Authentication
+- [MySQL](https://mysql.com/) - Database
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+
+## 📞 Support
+
+If you encounter any issues or have questions, please:
+
+1. Check the [Issues](https://github.com/Ehab298/TripSync/issues) page
+2. Create a new issue if your problem isn't already reported
+3. Contact the development team
+
+---
 
 <div align="center">
-  Made with ❤️ by the TripSync Team
+  
+**Made with ❤️ by the TripSync Team**
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ehab298/TripSync)
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+
 </div>
