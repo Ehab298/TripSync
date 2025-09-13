@@ -12,7 +12,7 @@ TripSync is a powerful travel management platform that helps users synchronize t
 ## 📸 Screenshots
 
 ### Dashboard Overview
-![Dashboard](./images/dashboard.png)
+![Dashboard](./Image/AvailabilityChecker.png)
 *Main dashboard showing trip overview and quick actions*
 
 ### Trip Planning Interface
