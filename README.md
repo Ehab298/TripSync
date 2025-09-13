@@ -167,8 +167,14 @@ Populate the database with sample data:
 ```bash
 php artisan db:seed
 ```
+### 4. create admin 
 
-### 4. link admin 
+local url 
+```bash
+php artisan make:filament-user
+
+```
+### 5. link admin 
 
 local url 
 ```bash
