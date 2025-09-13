@@ -15,9 +15,8 @@ TripSync is a powerful travel management platform that helps users synchronize t
 ![Dashboard](./Image/Dasboard.png)
 *Main dashboard showing trip overview and quick actions*
 
-### Trip Planning Interface
-![Trip Planning](./images/trip-planning.png)
-*Intuitive trip planning interface with timeline and itinerary management*
+### Availability Checker
+![Trip Planning](./Image/AvailabilityChecker.png)
 
 ### Stop overlapping trips
 ![Collaboration](./Image/Overlappingtrips.png)
